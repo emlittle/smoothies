@@ -14,7 +14,7 @@ cnx = st.connection('snowflake')
 session = cnx.session
 cursor = cnx.cursor()
 
-cursor.execute("SELECT fruit_name, search_from FROM fruit_options")
+cursor.execute("SELECT fruit_name, search_on FROM fruit_options")
 my_dataframe = pd.DataFrame(cursor.fetchall())
 
 #my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'))
