@@ -16,7 +16,6 @@ cursor = cnx.cursor()
 
 cursor.execute("SELECT fruit_name, search_on FROM fruit_options order by fruit_id asc")
 my_dataframe = pd.DataFrame(cursor.fetchall(), columns=['FRUIT_NAME', 'SEARCH_ON'])
-st.write(my_dataframe)
 
 name_on_order = st.text_input('Name on Smoothie:')
 st.write('The name on your smoothie will be:', name_on_order)
