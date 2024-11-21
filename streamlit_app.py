@@ -44,7 +44,7 @@ if ingredients_list:
         cursor.execute(my_insert_stmt)
         cursor.close()
 
-        st.success(f'Your Smoothie is order, {name_on_order}!', icon="✅")
+        st.success(f'Your Smoothie order had been place, {name_on_order}!', icon="✅")
 
 
   
