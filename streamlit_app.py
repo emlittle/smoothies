@@ -17,7 +17,7 @@ cursor = cnx.cursor()
 cursor.execute("SELECT * FROM fruit_options")
 # Fetch data into a DataFrame
 import pandas as pd
-my_dataframe = pd.DataFrame(cursor.fetchall(), columns=[col[0] for col in cursor.description])
+my_dataframe = pd.DataFrame(cursor.fetchall(), columns=[col[1]])
 
 #my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'))
 st.dataframe(data=my_dataframe, use_container_width=True)
