@@ -24,7 +24,7 @@ st.write(my_dataframe)
 
 name_on_order = st.text_input('Name on Smoothie:')
 st.write('The name on your smoothie will be:', name_on_order)
-ingredients_list = st.multiselect('Choose up to 5 ingredients:', my_dataframe.iloc[:, 0], max_selections=5)
+ingredients_list = st.multiselect('Choose up to 5 ingredients:', my_dataframe['0'], max_selections=5)
 
 if ingredients_list:
     ingredients_string = ''
