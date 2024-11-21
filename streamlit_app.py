@@ -15,8 +15,7 @@ session = cnx.session
 cursor = cnx.cursor()
 
 cursor.execute("SELECT fruit_name, search_on FROM fruit_options")
-my_dataframe = pd.DataFrame(cursor.fetchall())
-
+my_dataframe = pd.DataFrame(cursor.fetchall(), columns=['FRUIT_NAME', 'SEARCH_ON'])
 st.write(my_dataframe)
 
 #my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'))
@@ -24,18 +23,15 @@ st.write(my_dataframe)
 
 name_on_order = st.text_input('Name on Smoothie:')
 st.write('The name on your smoothie will be:', name_on_order)
-ingredients_list = st.multiselect('Choose up to 5 ingredients:', my_dataframe['0'], max_selections=5)
+ingredients_list = st.multiselect('Choose up to 5 ingredients:', my_dataframe['FRUIT_NAME'], max_selections=5)
 
 if ingredients_list:
     ingredients_string = ''
     
     for fruit_chosen in ingredients_list:
         ingredients_string += fruit_chosen + ' '
-
-        fruit_name = my_dataframe.iloc[:,0]
-        search = my_dataframe.iloc[:,1]
-
-        search_on = my_dataframe.loc[fruit_name == fruit_chosen, search].iloc[0]
+        
+        search_on=pd_df.loc[pd_df['FRUIT_NAME'] == fruit_chosen, 'SEARCH_ON'].iloc[0]
         st.write('The search value for ', fruit_chosen,' is ', search_on, '.')
         
         st.subheader(fruit_chosen + ' Nutrition Information')
