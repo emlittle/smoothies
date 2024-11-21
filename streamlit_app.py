@@ -17,6 +17,8 @@ cursor = cnx.cursor()
 cursor.execute("SELECT fruit_name, search_on FROM fruit_options")
 my_dataframe = pd.DataFrame(cursor.fetchall())
 
+st.write(my_dataframe)
+
 #my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'))
 #st.dataframe(data=my_dataframe, use_container_width=True)
 
